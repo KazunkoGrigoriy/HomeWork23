@@ -11,6 +11,7 @@ namespace HomeWork23
             int namberOfDelimiters = 0; //количество точек и запятых в строке
             int numberOfDecimal = 0; //количество цифр дробной части
             bool negativeNumber = false; //флаг для проверки наличия знака "-" в строке, false - положительное число, true - отрицательное
+            int kodSimbol;
             
             //Проверка наличия разделителя (точки или запятой) в строке
             while(i < str.Length && namberOfDelimiters <= 1)
@@ -42,9 +43,10 @@ namespace HomeWork23
             //Цикл преобразования элементов строки в цифры
             while(i < str.Length)
             {
-                if (str[i] >= 0x30 && str[i] <= 0x39) //сравнение сомвола с его кодом: 0х30 : 0 ... 0х39 : 9
+                kodSimbol = str[i] & 0x0F;
+                if (kodSimbol >= 0 && kodSimbol <= 9)
                 {
-                    chislo = chislo + (str[i] & 0x0F);
+                    chislo = chislo + kodSimbol;
                     chislo = chislo * 10;
                 }
                 else
